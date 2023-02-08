@@ -6,6 +6,7 @@ from django.db import models
 class TrainingTypes(models.Model):
     name = models.CharField("Тип тренинга", max_length=200)
     description = models.TextField("Описание")
+    url = models.SlugField(max_length=255, unique=True, default="q")
 
     def __str__(self):
         return self.name
@@ -19,6 +20,7 @@ class Locality(models.Model):
     name = models.CharField("Место тренинга", max_length=255)
     description = models.TextField("Описание")
     image = models.ImageField("Изображение", upload_to="locality")
+    url = models.SlugField(max_length=255, unique=True, default="q")
 
     def __str__(self):
         return self.name
@@ -26,7 +28,6 @@ class Locality(models.Model):
     class Meta:
         verbose_name = "Место проведения тренинга"
         verbose_name_plural = "Места проведения тренингов"
-
 
 
 class Genders(models.Model):
@@ -52,6 +53,7 @@ class Instructors(models.Model):
     locality = models.ManyToManyField(
         Locality, verbose_name="места проведения тренингов", related_name="instructor_locality"
     )
+    url = models.SlugField(max_length=255, unique=True, default="q")
 
     def __str__(self):
         return self.fio
