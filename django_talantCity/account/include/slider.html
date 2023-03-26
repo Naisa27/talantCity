@@ -1,0 +1,28 @@
+
+
+    <div id="carousel-training" class="carousel-training training-section carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for training in trainings_list %}
+            <div class="carousel-item item-content active" data-bs-interval="4000">
+                <img src="{{training.locality.image.url}}" class="d-block w-100 carousel-img" alt="картинка города">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>{{ training.name }}</h1>
+                    <p>{{ training.locality.name }}</p>
+                    <p>с {{ training.dtStart }} по {{ training.dtEnd }}</p>
+                    <a class="btn btn-primary btn-lg btn-cta" href="{{ training.get_absolute_url }}" role="button" target="_blank">Узнать больше...</a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-training" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel-training" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+
+    </div>

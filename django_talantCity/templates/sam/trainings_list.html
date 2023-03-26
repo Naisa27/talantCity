@@ -1,0 +1,62 @@
+
+{% load training_tag %}
+<section id="featured" class="section-padding pb-70">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-2">
+
+                <div class="w3layouts-newsletter">
+                    <h3 class="sear-head editContent" >Поиск тренинга</h3>
+                    <form action="#" method="post" class="d-flex editContent" >
+                        <input type="search" placeholder="Введите название..." name="search" class="form-control" required="">
+                        <button class="btn1 btn" ><span class="fa fa-search" aria-hidden="true" ></span></button>
+                    </form>
+                </div>
+                <form action="{% url 'filter' %}" method="get">
+                <div class="left-side my-4">
+                    <h3 class="sear-head editContent" >Типы</h3>
+                    <ul class="w3layouts-box-list">
+                        {% get_trainingTypes as trainingTypes %}
+                        {% for trainingType in trainingTypes %}
+                        <li class="editContent" >
+                            <input type="checkbox" class="checked" name="trainingType" value="{{ trainingType.id }}">
+                            <span class="span editContent" >{{ trainingType }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="left-side">
+                    <h3 class="sear-head editContent" >Место проведения</h3>
+                    <ul class="w3layouts-box-list">
+                        {% get_trainingLocalities as trainingLocalities %}
+                        {% for locality in trainingLocalities %}
+                        <li class="editContent" >
+                            <input type="checkbox" class="checked" name="locality" value="{{ locality.id }}">
+                            <span class="span editContent" >{{ locality }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button type="submit">Найти</button>
+                </form>
+            </div>
+            <div class="col-lg-10 col-md-10">
+                <div class="row">
+                    <!-- single featured item -->
+                    {% for training in trainings %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-featured-item-wrap">
+                            <h3><a href="{{ training.get_absolute_url }}" target="_blank">{{ training.name }}</a></h3>
+                            <div class="single-featured-item">
+                                <p>{{ training.trainingType }} - {{ training.locality }}</p>
+                                <p>с {{ training.dtStart }} по {{ training.dtEnd }}</p>
+                                <p>{{ training.shortText }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

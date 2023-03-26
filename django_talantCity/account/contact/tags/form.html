@@ -1,0 +1,9 @@
+<h3 class="footer-title text-uppercase editContent mb-lg-4 mb-3">Рассылка новостей</h3>
+
+<p class="editContent">Подписавшись на нашу рассылку, Вы всегда будете получать последние новости от нас.</p>
+<form action="{% url 'contact' %}" method="post" class="w3layouts-newsletter">
+    {% csrf_token %}
+    {{ contact_form }}
+    <button class="btn1 btn"><span class="fab fa-telegram-plane" aria-hidden="false"></span></button>
+
+</form>

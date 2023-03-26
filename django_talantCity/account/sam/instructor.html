@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load training_tag %}
+{% block title %} Тренинг {{ instructor.fio }} {% endblock title %}
+{% block content %}
+<section id="about" class="section-padding about-area bg-light">
+    <div class="container">
+        <!-- Section Title -->
+        <div class="row justify-content-center">
+            <div class="col-lg-6 ">
+                <div class="section-title text-center">
+                    <h2>{{ instructor.fio }}</h2>
+                </div>
+                <p>Возраст: {{ instructor.get_age }}</p>
+                <p><b>Работаю в городах:</b>
+                    {% for locality in instructor.locality.all %}
+                        {{ locality.name }},
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+        <!-- //Section Title -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-bg" >
+                    <img src="{{instructor.image.url}}" class="img-inner" alt="фото тренера">
+                    <!-- Social Link -->
+                    <div class="social-aria">
+                        <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                        <a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
+                        <a target="_blank" href="#"><i class="fab fa-pinterest"></i></a>
+                        <a target="_blank" href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <!-- // Social Link -->
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-content">
+<!--                    <h2>Hello, I am <span>AL Mamun</span></h2>-->
+                    <h4>{{ instructor.education }}</h4>
+                    <p>{{ instructor.description|safe }}</p>
+
+                    <h5>Мои контакты</h5>
+
+                    <!-- Skill Area -->
+                    <div id="skills" class="skill-area">
+
+                        <!-- Single skill -->
+                        <div class="single-skill">
+                            <div class="skillbar">
+                                <div class="skillbar-title"><span>E-mail</span></div>
+                                <div class="skillbar-bar"></div>
+                                <div class="skill-bar-percent">{{ instructor.email }}</div>
+                            </div>
+                        </div>
+                        <!-- //Single skill -->
+
+                        <!-- Single skill -->
+                        <div class="single-skill">
+                            <div class="skillbar">
+                                <div class="skillbar-title"><span>Телефон</span></div>
+                                <div class="skillbar-bar"></div>
+                                <div class="skill-bar-percent">{{ instructor.mobphone }}</div>
+                            </div>
+                        </div>
+                        <!-- //Single skill -->
+
+
+                    </div>
+                    <!-- //Skill Area -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

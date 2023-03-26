@@ -76,12 +76,7 @@ ol {
 
 /* CSS Document */
 
-header {
-    position: fixed;
-    z-index: 9;
-    width: 100%;
-    background-color: #07aef7f2;
-}
+
 
 .toggle,
 [id^=drop] {
